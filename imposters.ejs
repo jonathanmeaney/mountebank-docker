@@ -1,0 +1,33 @@
+{
+  "imposters": [
+    {
+      "port": 4545,
+      "protocol": "http",
+      "stubs": [
+        {
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "Hello from Mountebank"
+                }
+              }
+            }
+          ],
+          "predicates": [
+            {
+              "equals": {
+                "method": "GET",
+                "path": "/hello"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

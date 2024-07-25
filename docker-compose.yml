@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  mountebank:
+    container_name: mountbank
+    image: mountebank-image
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "2525:2525"
+      - "4545:4545"
+    volumes:
+      - ./imposters.ejs:/app/imposters.ejs
+    command:
+      ["mb", "start", "--configfile", "/app/imposters.ejs", "--allowInjection"]
